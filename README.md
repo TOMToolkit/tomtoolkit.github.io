@@ -1,3 +1,8 @@
+## TOM Toolkit Community Page
+This is the source code for the TOM Toolkit page located at https://tometoolkit.github.io using the Jekyll static site generator.
+
+The following is an auto generated README provided by github.
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/TOMToolkit/tomtoolkit.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
