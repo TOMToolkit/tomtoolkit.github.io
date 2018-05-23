@@ -1,5 +1,5 @@
 ## TOM Toolkit Community Page
-This is the source code for the TOM Toolkit page located at https://tometoolkit.github.io using the Jekyll static site generator.
+This is the source code for the TOM Toolkit page located at https://tomtoolkit.github.io using the Jekyll static site generator.
 
 The following is an auto generated README provided by github.
 
