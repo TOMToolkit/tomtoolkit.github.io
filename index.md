@@ -14,7 +14,6 @@ is a good place to get started. The source code for the project
 is also [available on Github](https://github.com/tomtoolkit).
 
 # News
-
 <ul class="post-list">
   {% for post in site.posts %}
     <li>
