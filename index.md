@@ -6,7 +6,7 @@ layout: default
 
 The TOM Toolkit project was started in early 2018 with the goal of simplifying
 the development of next generation software for the rapidly evolving field
-of Astronomy. Read more [about TOMs](/about) and the [motiviation](/about)
+of astronomy. Read more [about TOMs](/about) and the [motiviation](/about)
 for them.
 
 Are you looking to run a TOM of your own? The [documentation](/docs/)
