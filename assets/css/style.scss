@@ -1,0 +1,37 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+ul.post-list {
+    font-size: 1.6em;
+    font-weight: bold;
+    list-style: disclosure-closed inside;
+    li {
+        padding: 4px;
+    }
+}
+
+p.post-details {
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#logo {
+    max-width: 150px;
+    margin: unset;
+    border: unset;
+}
+
+h1.header {
+    font-size: 26px;
+}
+
+header a {
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+a {
+    color: #ff6e0d;
+}
