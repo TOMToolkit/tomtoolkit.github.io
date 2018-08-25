@@ -36,7 +36,7 @@ mytom
 ```
 
 ### Creating a Broker
-In this example, we will create a broker named *MyBroker*.
+In this example, we will create a broker named __MyBroker__.
 
 Begin by creating a file `my_broker.py`, and placing it in the `mytom/` directory
 of the project. `my_broker.py` will contain the class which defines our custom
