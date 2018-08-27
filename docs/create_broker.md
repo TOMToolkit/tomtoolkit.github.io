@@ -242,3 +242,6 @@ The query result will be presented.
 
 To create a target from any query result, click the 'create target' button. To view the raw
 alert data, click the 'view' link.
+
+[Click here](https://gist.github.com/mgdaily/19aefebd05da91fe6ebfe928b4862a51) to view
+the full source code detailed in this example.
