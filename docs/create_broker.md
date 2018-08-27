@@ -45,7 +45,7 @@ Our custom broker relies on the TOM Toolkit modules that were installed in the
 to import the necessary modules.
 
 ```python
-from tom_alerts.alerts import GenericQueryForm, GenericAlert, get_service_class
+from tom_alerts.alerts import GenericQueryForm, GenericAlert
 from tom_alerts.models import BrokerQuery
 from tom_targets.models import Target
 ```
@@ -169,11 +169,9 @@ data. How convenient! We'll just go ahead and define the `GenericAlert`'s `url`
 field as the `broker_url` we retrieved our test data from.
 
 ```python
-@classmethod
-def to_generic_alert(clazz, alert):
-  ...
-  url=broker_url,
-  ...
+...
+url=broker_url,
+...
 ```
 
 #### `to_target` Class Method
@@ -223,7 +221,7 @@ Navigate to [http://127.0.0.1:8000/alerts/query/list/](http://127.0.0.1:8000/ale
 You should now see 'MyBroker' listed as a broker! Clicking the link will bring you
 to the query page, where you can make a query to our sample dataset.
 
-![successful-broker-list]({{"/assets/img/create_broker_doc/success_broker_list.png" | absolute_url}})
+![successful-broker-list](/assets/img/create_broker_doc/success_broker_list.png)
 
 ### Making a Query
 
@@ -231,16 +229,16 @@ Since we're only going to be filtering on the alert's 'name' field, we're only
 presented with that option. Name the query whatever you'd like, and we'll check
 our remote data source for a target named 'Tatooine'
 
-![example-query]({{"/assets/img/create_broker_doc/example_query.png" | absolute_url}})
+![example-query](/assets/img/create_broker_doc/example_query.png)
 
 Going back to [http://127.0.0.1:8000/alerts/query/list/](http://127.0.0.1:8000/alerts/query/list/),
 our new query will appear. Click the 'run' button to run the query.
 
-![populated-query-list]({{"/assets/img/create_broker_doc/populated_query_list.png" | absolute_url}})
+![populated-query-list](/assets/img/create_broker_doc/populated_query_list.png)
 
 The query result will be presented.
 
-![populated-query-list]({{"/assets/img/create_broker_doc/query_result.png" | absolute_url}})
+![query-result](/assets/img/create_broker_doc/query_result.png)
 
 To create a target from any query result, click the 'create target' button. To view the raw
 alert data, click the 'view' link.
