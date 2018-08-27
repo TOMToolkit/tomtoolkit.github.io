@@ -66,15 +66,12 @@ See [Requests Official API Docs](http://docs.python-requests.org/en/master/)
 
 ## Test Data
 
-In order to test that our broker can retrieve and process some
-remote data, we've created a set sample alerts [here](https://gist.githubusercontent.com/mgdaily/f5dfb4047aaeb393bf1996f0823e1064/raw/5e6a6142ff77e7eb783892f1d1d01b13489032cc/example_broker_data.json).
+In place of a remote broker, we've uploaded a [sample JSON file to GitHub Gist](https://gist.githubusercontent.com/mgdaily/f5dfb4047aaeb393bf1996f0823e1064/raw/5e6a6142ff77e7eb783892f1d1d01b13489032cc/example_broker_data.json).
 
 For our broker to use this data, we will set `broker_url` to it.
-
 ```
 broker_url = https://gist.githubusercontent.com/mgdaily/f5dfb4047aaeb393bf1996f0823e1064/raw/5e6a6142ff77e7eb783892f1d1d01b13489032cc/example_broker_data.json
 ```
-__Can we do this in a cleaner fashion?__
 
 ## Broker Forms
 To define the query forms for our custom broker, we'll begin by creating class
@@ -132,9 +129,9 @@ request was successful, and return a list of all alerts whose name field matches
 name passed into the query.
 
 #### `fetch_alert` Class Method
-`fetch_alert` is similar to `fetch_alerts`, but is used in converting a TOM Alert
-into a TOM Target. Once a query has been performed, any resulting alert may be
-made into a TOM target directly from the query results page.
+`fetch_alert` is similar to `fetch_alerts`, but fetches a single alert with a given
+`alert_id`. Once a query has been performed, any resulting alert may be made into
+a TOM target directly from the query results page.
 
 ```python
 @classmethod
@@ -208,6 +205,7 @@ broker classes, so we'll need to add `MyBroker` to that list.
 ```python
 TOM_ALERT_CLASSES = [
     ...
+    'tom_alerts.brokers.mars.MARSBroker',
     'mytom.my_broker.MyBroker',
     ...
 ]
@@ -224,7 +222,7 @@ where `manage.py` resides and run
 Navigate to [http://127.0.0.1:8000/alerts/query/list/](http://127.0.0.1:8000/alerts/query/list/)
 
 You should now see 'MyBroker' listed as a broker! Clicking the link will bring you
-to the query page, where you can make a query to a remote broker.
+to the query page, where you can make a query to our sample dataset.
 
 ![successful-broker-list]({{"/assets/img/create_broker_doc/success_broker_list.png" | absolute_url}})
 
