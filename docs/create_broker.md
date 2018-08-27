@@ -86,9 +86,6 @@ class MyBrokerForm(GenericQueryForm):
     name = forms.CharField(required=True)
 ```
 
-See [Working with Forms](https://docs.djangoproject.com/en/2.1/topics/forms/) in
-the official Django docs.
-
 ## Broker Class
 To define our broker, we'll create the class `MyBroker`, also inside of `my_broker.py`.
 Our broker class will encapsulate the logic for making queries to a remote alert broker,
@@ -172,9 +169,11 @@ data. How convenient! We'll just go ahead and define the `GenericAlert`'s `url`
 field as the `broker_url` we retrieved our test data from.
 
 ```python
-...
-url=broker_url,
-...
+@classmethod
+def to_generic_alert(clazz, alert):
+  ...
+  url=broker_url,
+  ...
 ```
 
 #### `to_target` Class Method
@@ -226,7 +225,7 @@ to the query page, where you can make a query to our sample dataset.
 
 ![successful-broker-list]({{"/assets/img/create_broker_doc/success_broker_list.png" | absolute_url}})
 
-### Making a query
+### Making a Query
 
 Since we're only going to be filtering on the alert's 'name' field, we're only
 presented with that option. Name the query whatever you'd like, and we'll check
