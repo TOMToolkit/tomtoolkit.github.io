@@ -19,3 +19,17 @@ built in TOM templates to change the look and feel of your TOM.
 
 [Building a TOM Alert Broker](/docs/create_broker) - Learn how to build
 an Alert Broker module to add new sources of targets to your TOM.
+
+
+## Frequently Asked Questions
+
+### How do I create a super user?
+You can create a new superuser using the built in management command:
+
+    ./manage.py createsuperuser
+
+The `manage.py` file can be found in the root of your project.
+
+Alternatively, you can give a user superuser status if you are already logged
+in as a superuser by visiting the admin page for users:
+[http://127.0.0.1/admin/auth/user/](http://127.0.0.1/admin/auth/user/)
