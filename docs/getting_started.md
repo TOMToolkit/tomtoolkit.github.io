@@ -79,6 +79,7 @@ INSTALLED_APPS = [
     'tom_targets',
     'tom_catalogs',
     'tom_alerts'
+    'tom_observations',
 ]
 ```
 
@@ -96,6 +97,12 @@ In order to be able to access the TOM views, we'll set the projects root url con
 
 Note that if you'd like to add additional custom views and urls later, you can
 [include the urlconf](https://docs.djangoproject.com/en/2.1/topics/http/urls/#including-other-urlconfs) instead.
+
+We also need to set the directory where data products should go. Create a
+directory `data` in the project root. Then add the following settings:
+
+    MEDIA_URL = '/data/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'data')
 
 Finally, in order to get good looking forms, let's enable the bootstrap4 crispy pack:
 
