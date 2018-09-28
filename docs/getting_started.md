@@ -46,68 +46,47 @@ Now, install Django...
 
     django-admin startproject mytom
 
-You should now have a fully functional standard Django installation in `mytom`. Now you can run migrations,
-add a super user, and configure the project to your liking. Again, we highly recommend working through
-the [Django tutorial](https://docs.djangoproject.com/en/2.1/contents/) if you have not already.
+You should now have a fully functional standard Django installation inside the
+`mytom` folder.
 
 ## Installing the TOM Toolkit
 
-The TOM Toolkit is a collection of Django apps that can be used in any Django project. To download it,
-use pip:
+The TOM Toolkit is a collection of Django apps that can be used in any Django
+project. To download it, use pip:
 
     pip install https://github.com/TOMToolkit/tom_base/archive/master.zip
 
-Note: the toolkit is not available on PyPI yet, which is why we install from github, but it will be soon.
+Note: the toolkit is not available on PyPI yet, which is why we install from
+github, but it will be soon.
 
 The above command should pull down `tomtoolkit` and all it's dependencies.
 
 ## Adding tomtoolkit to your Django project
 
-
-First, add the following apps to your project's `settings.py` `INSTALLED_APPS`:
+We ned to add the `tom_setup` app to our project's `INSTALLED_APPS`. Locate the
+`settings.py` file inside your project directory (usually in a subdirectory of the
+main folder, i.e. mytom/mytom/settings.py) and edit it so that it looks like this:
 
 ```python
 INSTALLED_APPS = [
-    ...
-    'django.contrib.sites',
-    'tom_common',
-    'django_comments',
-    'bootstrap4',
-    'crispy_forms',
-    'django_filters',
-    'django_gravatar',
-    'tom_targets',
-    'tom_catalogs',
-    'tom_alerts'
-    'tom_observations',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'tom_setup',
 ]
 ```
 
-Note that `tom_common` must come before `django_comments`.
+## Run the setup script
 
-The following settings should also be added to your project's `settings.py`:
+The `tom_setup` app contains a script that will bootstrap a new TOM in your
+current project. Run it:
 
-The TOM Toolkit relies on the Django Sites framework, so we'll add this required setting:
+    ./manage.py tom_setup
 
-    SITE_ID = 1
-
-In order to be able to access the TOM views, we'll set the projects root url conf to `tom_common`'s:
-
-    ROOT_URLCONF = 'tom_common.urls'
-
-Note that if you'd like to add additional custom views and urls later, you can
-[include the urlconf](https://docs.djangoproject.com/en/2.1/topics/http/urls/#including-other-urlconfs) instead.
-
-We also need to set the directory where data products should go. Create a
-directory `data` in the project root. Then add the following settings:
-
-    MEDIA_URL = '/data/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'data')
-
-Finally, in order to get good looking forms, let's enable the bootstrap4 crispy pack:
-
-    CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+The install script will ask you a few questions and then install your TOM.
 
 ## Running the dev server
 
