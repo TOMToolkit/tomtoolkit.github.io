@@ -31,4 +31,6 @@ No two TOM systems are identical, as astronomers strongly prefer to directly con
 
 What’s needed is a software package that lets astronomers easily build a TOM, customised to suit the needs of their project, without becoming an IT expert or software engineer.
 
+## Attributions
 
+The TOM Toolkit community project was conceived, created, and is managed by Las Cumbres Observatory, with generous financial support from the Zegar Family Foundation and the Heising-Simons Foundation.
