@@ -30,5 +30,3 @@ However, designing the existing TOM systems required high levels of expertise in
 No two TOM systems are identical, as astronomers strongly prefer to directly control the science-specific aspects of their projects such as target selection, observing strategy and analysis techniques.  At the same time, while all of these systems are customised for the science goals of the projects they support, much of their underlying infrastructure and functions are very similar.
 
 What’s needed is a software package that lets astronomers easily build a TOM, customised to suit the needs of their project, without becoming an IT expert or software engineer.
-
-
