@@ -1,19 +1,26 @@
 ---
-title: Creating an Alert Broker with the TOM Toolkit
+title: Creating an Alert Broker Module for the TOM Toolkit
 ---
 
-# Creating an Alert Broker with the TOM Toolkit
-This guide will walk you through how to create a custom alert broker using the TOM toolkit.
+# Creating an Alert Broker Module for the TOM Toolkit
+This guide will walk you through how to create a custom alert broker module using the TOM toolkit.
+
+At the end of this tutorial we will have a very simple module that connects to
+an "alert broker" (in this case a static json file) and allows us to ingest
+targets into our TOM.
+
+You can follow this example to build an alert broker module to connect to a real
+alert broker.
 
 Be sure you've followed the [Getting Started](/docs/getting_started) guide before continuing onto this tutorial.
 
-## What is an Alert Broker?
-A TOM Toolkit Alert Broker is an object which contains the logic for querying a remote broker
+## What is an Alert Broker Module?
+A TOM Toolkit Alert Broker Module is an object which contains the logic for querying a remote broker
 (e.g [MARS](https://mars.lco.global)), and transforming the returned data into TOM Toolkit Targets.
 
 ### TOM Alerts module
 The TOM Alerts module is a Django app which provides the methods and
-classes needed to create a custom TOM alert broker. A broker may be created to ingest
+classes needed to create a custom TOM alert broker module. A module may be created to ingest
 alerts of an arbitrary form from a remote source. The TOM Alerts module provides
 tools to transform these alerts into TOM-specific alerts to be used in the creation of TOM Targets.
 
@@ -33,14 +40,14 @@ mytom
     └── wsgi.py
 ```
 
-# Creating a Broker
+# Creating a Broker Module
 In this example, we will create a broker named __MyBroker__.
 
 Begin by creating a file `my_broker.py`, and placing it in the `mytom/` directory
 of the project. `my_broker.py` will contain the classes that define our custom
-TOM Alert Broker.
+TOM Alert Broker Module.
 
-Our custom broker relies on the TOM Toolkit modules that were installed in the
+Our custom broker module relies on the TOM Toolkit modules that were installed in the
 [Getting Started](/docs/getting_started) guide. Begin by editing `my_broker.py`
 to import the necessary modules.
 
@@ -50,7 +57,7 @@ from tom_alerts.models import BrokerQuery
 from tom_targets.models import Target
 ```
 
-In order to add custom forms to our broker, we will also need Django's `forms` module.
+In order to add custom forms to our broker module, we will also need Django's `forms` module.
 
 ```python
 from django import forms
@@ -68,13 +75,13 @@ See [Requests Official API Docs](http://docs.python-requests.org/en/master/)
 
 In place of a remote broker, we've uploaded a [sample JSON file to GitHub Gist](https://gist.githubusercontent.com/mgdaily/f5dfb4047aaeb393bf1996f0823e1064/raw/5e6a6142ff77e7eb783892f1d1d01b13489032cc/example_broker_data.json).
 
-For our broker to use this data, we will set `broker_url` to it.
+For our module to use this data, we will set `broker_url` to it.
 ```
 broker_url = https://gist.githubusercontent.com/mgdaily/f5dfb4047aaeb393bf1996f0823e1064/raw/5e6a6142ff77e7eb783892f1d1d01b13489032cc/example_broker_data.json
 ```
 
 ## Broker Forms
-To define the query forms for our custom broker, we'll begin by creating class
+To define the query forms for our custom broker module, we'll begin by creating class
 `MyBrokerForm` inside `my_broker.py`, which inherits the `tom_alert` module's
 `GenericQueryForm`.
 
@@ -87,7 +94,7 @@ class MyBrokerForm(GenericQueryForm):
 ```
 
 ## Broker Class
-To define our broker, we'll create the class `MyBroker`, also inside of `my_broker.py`.
+To define our broker module, we'll create the class `MyBroker`, also inside of `my_broker.py`.
 Our broker class will encapsulate the logic for making queries to a remote alert broker,
 retrieving and sanitizing data, and creating TOM alerts from it.
 
@@ -102,7 +109,7 @@ class MyBroker:
 ```
 
 ## Required Broker Class Methods
-Each TOM alert broker is required to have a base set of class methods. These
+Each TOM alert broker module is required to have a base set of class methods. These
 methods enable the conversion of remote alert data into TOM-specific
 alerts and targets.
 
