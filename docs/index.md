@@ -20,6 +20,10 @@ built in TOM templates to change the look and feel of your TOM.
 [Building a TOM Alert Broker](/docs/create_broker) - Learn how to build
 an Alert Broker module to add new sources of targets to your TOM.
 
+[Running Custom Code Hooks](/docs/custom_code) - Learn how to run your own scripts
+when certain actions happen within your TOM (for example, an observation
+completes).
+
 
 ## Frequently Asked Questions
 
