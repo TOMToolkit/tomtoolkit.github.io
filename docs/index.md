@@ -35,7 +35,6 @@ deploy it somewhere so it is permanently accessible by you and your collegues.
 [Deploy to Heroku](/docs/deployment_heroku) - [Heroku](https://heroku.com) is a
 PaaS that allows you to publicly deploy your web applications without the need
 for managing the infrastructure yourself.
->>>>>>> 173c8ee7966166e91f3c32439aa91410bbcb56f9
 
 ## Frequently Asked Questions
 
