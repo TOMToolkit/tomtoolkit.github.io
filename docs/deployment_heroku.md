@@ -18,6 +18,14 @@ you plan on doing lots of expensive processing on your data, you might want to
 look into alternatives.
 
 
+## Example code repository
+
+There is an example code repository,
+[TOMToolkit/herokutom](https://github.com/TOMToolkit/herokutom), which contains the
+minimal setup required to run a TOM in Heroku. It is running at
+[https://herokutom.herokuapp.com/](https://herokutom.herokuapp.com/).
+
+
 ## Prerequisites
 
 1. You should have a local TOM up and running following the instructions in the
