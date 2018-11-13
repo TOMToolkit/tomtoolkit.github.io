@@ -24,6 +24,13 @@ an Alert Broker module to add new sources of targets to your TOM.
 when certain actions happen within your TOM (for example, an observation
 completes).
 
+## Deployment
+Once you've got a TOM up and running on your machine, you'll probably want to
+deploy it somewhere so it is permanently accessible by you and your collegues.
+
+[Deploy to Heroku](/docs/deployment_heroku) - [Heroku](https://heroku.com) is a
+PaaS that allows you to publicly deploy your web applications without the need
+for managing the infrastructure yourself.
 
 ## Frequently Asked Questions
 
