@@ -20,6 +20,9 @@ built in TOM templates to change the look and feel of your TOM.
 [Building a TOM Alert Broker](/docs/create_broker) - Learn how to build
 an Alert Broker module to add new sources of targets to your TOM.
 
+## Contributing
+
+[Contribution Guide](/docs/contributing) - If you find an issue, you need help with your TOM, you have a useful idea, or you wrote a module you'd like to be included in the TOM Toolkit, start with the contribution guide.
 
 ## Frequently Asked Questions
 
