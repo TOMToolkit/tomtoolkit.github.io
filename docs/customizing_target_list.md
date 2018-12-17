@@ -1,7 +1,6 @@
 ---
 title: Customizing the Target List
 ---
-# Customizing The Target List
 
 In this tutorial we are going to change our target list page to show both
 different target attributes and allow filtering on a different attribute as well.

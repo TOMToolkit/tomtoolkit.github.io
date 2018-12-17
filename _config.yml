@@ -1,3 +1,66 @@
-title: TOM Toolkit
-description: The Target Observation Management Toolkit is a framework for building software for the next generation of Astronomy.
-theme: jekyll-theme-dinky
+title: Target and Observation Manager
+description:
+author: TOM Toolkit
+github: https://github.com/TOMToolkit
+about: The TOM Toolkit is a framework for building software for the next generation of astronomy.
+disqus_shortname:
+google_analytics:
+avatar_url: /static/img/logo.png
+
+enableTags: true
+tagarray: []
+
+collections:
+  project:
+    output: true
+    permalink: /project/:path/
+
+attributions:
+    - icon: /static/img/lco.jpg
+      link: 'https://lco.global'
+    - icon: /static/img/hs.jpg
+      link: 'https://www.hsfoundation.org/'
+    - icon: /static/img/zff.png
+      link: 'https://sites.google.com/zegarff.org/site'
+attribution_text: This project is managed by Las Cumbres Observatory, with generous financial support from the Zegar Family Foundation and the Heising-Simons Foundation.
+
+social:
+    - icon: fa-facebook
+      link: "#"
+    - icon: fa-twitter
+      link: "https://twitter.com/agusmakmun6"
+    - icon: fa-linkedin
+      link: "https://www.linkedin.com/in/summonagus"
+    - icon: fa-stack-exchange
+      link: "#"
+    - icon: fa-github
+      link: "https://github.com/agusmakmun"
+
+share:
+  twitter_username:
+  fb_appid:
+
+urls:
+    - text: About
+      url: /about/
+    - text: Documentation
+      url: /docs/
+    - text: Github
+      url: 'https://github.com/TOMToolkit'
+
+url: "https://tomtoolkit.github.io"
+baseurl: ""
+paginate: 20
+per_page: 20
+paginate_path: "/page/:num/"
+markdown: kramdown
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: ['development']

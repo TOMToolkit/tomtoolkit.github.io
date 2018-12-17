@@ -2,8 +2,6 @@
 title: Running Custom Code on Actions in your TOM
 ---
 
-# Running Custom Code on Actions in your TOM
-
 Sometimes it would be disireable for your TOM to run custom code when certain
 action happen. For example: when an observation is completed you'd like to submit
 your data to an outside service. Or when you add a new target you'd like to

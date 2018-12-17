@@ -2,7 +2,6 @@
 title: Deploy a TOM to Heroku
 ---
 
-# Deploy a TOM to Heroku
 [Heroku](https://heroku.com) is a
 [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) which allows you to
 easily deploy web applications (like a TOM) to public servers without the need for

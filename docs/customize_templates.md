@@ -2,8 +2,6 @@
 title: Customizing Your TOM
 ---
 
-# Customizing Your TOM
-
 So you've got a TOM up and running, and your homepage looks something like this:
 
 ![Fresh Tom](/assets/img/customize_templates_doc/tomhomepagenew.png)
