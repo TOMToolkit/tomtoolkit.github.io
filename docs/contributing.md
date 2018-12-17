@@ -2,8 +2,6 @@
 title: Contribute to the TOM Toolkit
 ---
 
-# Contribute to the TOM Toolkit
-
 The page will go over the process for reporting issues, requesting features, getting
 support, and contributing to the TOM Toolkit.
 

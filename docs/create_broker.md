@@ -2,7 +2,6 @@
 title: Creating an Alert Broker Module for the TOM Toolkit
 ---
 
-# Creating an Alert Broker Module for the TOM Toolkit
 This guide will walk you through how to create a custom alert broker module using the TOM toolkit.
 
 At the end of this tutorial we will have a very simple module that connects to

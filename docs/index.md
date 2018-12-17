@@ -2,8 +2,6 @@
 layout: default
 ---
 
-# Documentation
-
 ## Introduction
 Start here if you are new to using the TOM Toolkit.
 

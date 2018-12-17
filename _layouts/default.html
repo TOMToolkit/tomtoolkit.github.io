@@ -142,19 +142,6 @@ layout: compress
               <li><a class="about" href="{{ i.url }}">{{ i.text }}</a></li>
             {% endfor %}
           </ul>
-          <hr />
-          {% if site.attribution_text %}
-          <div class="profile-about">
-            {{ site.attribution_text }}
-          </div>
-          {% endif %}
-          <div class="attributions">
-              <ul>
-                {% for link in site.attributions %}
-                  <li><a href="{{ link.link }}" target="_blank"><img src="{{ link.icon }}" /></a></li>
-                {% endfor %}
-              </ul>
-          </div>
         </div>
         <!-- end /.fixed-condition -->
       </div>
@@ -167,6 +154,13 @@ layout: compress
           {% if site.attribution_text %}
             <p>{{ site.attribution_text }}</p>
           {% endif %}
+          <div class="attributions">
+              <ul>
+                {% for link in site.attributions %}
+                  <li><a href="{{ link.link }}" target="_blank"><img src="{{ link.icon }}" /></a></li>
+                {% endfor %}
+              </ul>
+          </div>
           <!-- <div class="btn-github" style="float:right;">
             <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
             <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
