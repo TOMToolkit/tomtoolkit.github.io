@@ -8,6 +8,8 @@ Start here if you are new to using the TOM Toolkit.
 [Getting Started](/docs/getting_started) - First steps for getting a TOM
 up and running.
 
+[Workflow](/docs/workflow) - The general workflow used with TOMS.
+
 ## Extending and Customizing
 Start here to learn how to customize the look and feel of your TOM or
 add new functionality.
