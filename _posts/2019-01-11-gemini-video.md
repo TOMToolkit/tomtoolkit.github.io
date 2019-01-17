@@ -2,7 +2,7 @@
 layout: post
 title: "[Video] Triggering Target of Opportunity Observations with Gemini
 Observatory."
-date: 2018-12-19 00:06:00 -0800
+date: 2019-01-11 00:06:00 -0800
 author: Austin Riba <ariba@lco.global>
 tags:
  - Gemini
