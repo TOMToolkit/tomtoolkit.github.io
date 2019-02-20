@@ -163,7 +163,8 @@ that allows Heroku to automatically deploy your app when you push code to Github
 
 Also note that Heroku has limitations, especially around storing data on disk. By
 default, **Heroku only keeps files on disk for a maximum of 24 hours**. If you
-plan on storing data in your tom (as opposed to your local machine) you might
-consider using a cloud storage service like [Amazon
-S3](https://devcenter.heroku.com/articles/s3).
+plan on storing data (such as fits files or other supplementary data) you will
+have to use an external stoage service. In this case, you might want to read ahead
+on how to [Use Amazon S3 to Store Data for a
+TOM](https://tomtoolkit.github.io/docs/amazons3).
 
