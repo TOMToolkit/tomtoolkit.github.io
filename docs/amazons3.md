@@ -10,7 +10,7 @@ cost, while providing high reliability and feature rich services. In most cases
 using a cloud storage system also provides performance and speed increases to your
 application.
 
-Configuring the TOM toolkit to store data on Amazon S3 is fairly straighforward.
+Configuring the TOM toolkit to store data on Amazon S3 is fairly straightforward.
 Once enabled, data product downloads, uploads, and static assets (images,
 stylesheets, etc) will be stored in Amazon S3 instead of the local filesystem
 where your TOM is run.
@@ -19,11 +19,11 @@ where your TOM is run.
 
 To use S3, you'll first need to sign up for an [Amazon Web
 Services](https://portal.aws.amazon.com/billing/signup#/start) account. New
-accounts get access to one year of free teir access which includes a year of S3 at
+accounts get access to one year of free tier access which includes a year of S3 at
 a max of 5GB. If you're interested in the cost beyond 5Gb, try out the [Amazon
 cost calculator](https://calculator.s3.amazonaws.com/index.html).
 
-Once you have created an accoumt, you'll need your access key id and secrect access
+Once you have created an account, you'll need your access key id and secret access
 key. These can be found under your profile settings -> "My security credentials".
 Make sure you save these in a safe place, you'll need them later.
 
@@ -35,7 +35,7 @@ should be fine.
 
 **We need to enable CORS** for JS9 (or any other javascript code that wants to
 access our data directly) to work. Under the "Permissions" tab for your bucket,
-find the section for "CORS cofiguration". In the editor, paste the following policy:
+find the section for "CORS configuration". In the editor, paste the following policy:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,12 +81,12 @@ on how you deploy your TOM, you can set these in a variety of ways. For example:
 export AWS_ACCESS_KEY_ID=MyAccessKey would be one way to set them using Bash.
 
 * AWS_ACCESS_KEY_ID is your access key id from your security credentials.
-* AWS_SECRECT_ACCESS_KEY is your secret acccess key from your security credentials.
+* AWS_SECRECT_ACCESS_KEY is your secret access key from your security credentials.
 * AWS_STORAGE_BUCKET_NAME is the name you gave to the bucket you created.
 * AWS_S3_REGION_NAME is the name of th region you created your bucket in.
 
 Once these settings are filled out, your TOM should store all future data in S3.
-If you had existing data in yuor TOM, you should copy it over to your bucket in
+If you had existing data in your TOM, you should copy it over to your bucket in
 the exact same way it was stored locally.
 
 ## For Heroku Users
