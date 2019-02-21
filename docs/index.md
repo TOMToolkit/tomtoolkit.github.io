@@ -14,6 +14,9 @@ up and running.
 Start here to learn how to customize the look and feel of your TOM or
 add new functionality.
 
+[Custom Settings](/docs/customsettings) - Settings available to the TOM Toolkit
+which you may want to configure.
+
 [Customizing your TOM](/docs/customize_templates) - Learn how to override
 built in TOM templates to change the look and feel of your TOM.
 
@@ -44,6 +47,12 @@ the cloud stoage service Amazon S3 instead of your local disk.
 
 
 ## Frequently Asked Questions
+
+### I try to observe a target with LCO but get an error.
+
+You might not have added your LCO api key to your settings file under the
+`FACILITIES` settings. See [Custom Settings](/docs/customsettings#facilities) for
+more details.
 
 ### How do I create a super user?
 You can create a new superuser using the built in management command:
