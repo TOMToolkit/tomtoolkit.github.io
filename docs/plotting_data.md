@@ -7,7 +7,7 @@ target distribution. Sometimes it would be useful to visualize data in a differe
 way.
 
 In this tutorial you will learn how to build and display a very simple plot
-in our TOM: number of reduced datums per target. The end result will demonstrate
+in our TOM: number of reduced data per target. The end result will demonstrate
 how to create a [plot.ly](https://plot.ly) plot with data from our TOM. You will
 even package the code in it's own app so we can share it with other TOM users that
 might find it useful.
