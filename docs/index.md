@@ -30,6 +30,9 @@ an Alert Broker module to add new sources of targets to your TOM.
 when certain actions happen within your TOM (for example, an observation
 completes).
 
+[Creating Plots from TOM Data](/docs/plotting_data) - Learn how to create plots
+using plot.ly and your TOM data to display anywhere in your TOM.
+
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
 deploy it somewhere so it is permanently accessible by you and your collegues.
