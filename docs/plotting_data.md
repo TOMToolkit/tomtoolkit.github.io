@@ -132,7 +132,9 @@ template tag definition beforehand:
 
 This file contains the simple contents:
 
+    {% raw %}
     {{ figure|safe }}
+    {% endraw %}
 
 All this template does is output the `figure` variable, which is the html
 generated from plotly in the templatetag. We also tell django that the output is
@@ -144,8 +146,8 @@ automatically pick up new templatetags.
 Now that the templatetag and template are complete, we can use it in any template.
 You might have your own templates which you'd like to add the plot to, or perhaps
 you've customized one of the TOM supplied templates as per the [customizing
-templates](/docs/customize_templates) documentation. Either way, including our
-template tag works the same way. At the top of the template (after any 'extends')
+templates](/docs/customize_templates) documentation. Either way, including the
+templatetag works the same way. At the top of the template (after any 'extends')
 load the new tag library:
 
     {% raw %}
