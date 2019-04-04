@@ -33,6 +33,9 @@ completes).
 [Creating Plots from TOM Data](/docs/plotting_data) - Learn how to create plots
 using plot.ly and your TOM data to display anywhere in your TOM.
 
+[Sending email notifications](/docs/email_notifications) - Learn how to set-up 
+your TOM to send email notifications to users.
+
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
 deploy it somewhere so it is permanently accessible by you and your collegues.
