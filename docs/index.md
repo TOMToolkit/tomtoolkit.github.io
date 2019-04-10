@@ -33,6 +33,9 @@ completes).
 [Creating Plots from TOM Data](/docs/plotting_data) - Learn how to create plots
 using plot.ly and your TOM data to display anywhere in your TOM.
 
+[The Permissions System](/docs/permissions) - Use the permissions system to limit
+access to targets in your TOM.
+
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
 deploy it somewhere so it is permanently accessible by you and your collegues.
