@@ -23,7 +23,7 @@ app/
 
 A management command simply needs a class called `Command` that inherits from `BaseCommand`, and a `handle` class method that contains the logic for the command.
 
-```
+```python
 from django.core.management.base import BaseCommand
 from tom_observations import facility
 from tom_observations.models import ObservationRecord
@@ -38,7 +38,7 @@ class Command(BaseCommand):
 
 Now, we need to add the logic to query the facilities for data. First, we instantiate a class object for each facility:
 
-```
+```python
     facility_classes = {}
     for facility_name in facility.get_service_classes():
       facility_classes[facility_name] = facility.get_service_class(facility_name)()
@@ -46,7 +46,7 @@ Now, we need to add the logic to query the facilities for data. First, we instan
 
 Then, we iterate over each incomplete `ObservationRecord`, update the status in the database, and save the data products locally for that ObservationRecord.
 
-```
+```python
     observation_records = ObservationRecord.objects.all()
     for record in observation_record:
       if record.status not in facility_classes[record.facility].get_terminal_observing_states():
@@ -56,7 +56,7 @@ Then, we iterate over each incomplete `ObservationRecord`, update the status in 
 
 So our final management command should look like this:
 
-```
+```python
 from django.core.management.base import BaseCommand
 from tom_observations import facility
 from tom_observations.models import ObservationRecord
@@ -83,14 +83,14 @@ class Command(BaseCommand):
 
 Management commands also provide the ability to accept parameters. Doing this is as simple as implementing `add_arguments` as a class method on your `Command` class. Let's say we want to ensure that our command can be run for a single target:
 
-```
+```python
   def add_arguments(self, parser):
     parser.add_argument('--target_id', help='Download data for a single target')
 ```
 
 That code will process any additional parameters, and we simply need to handle them in our, well, `handle` class method.
 
-```
+```python
   def handle(self, *args, **options):
     if options['target_id']:
       try:
@@ -101,13 +101,13 @@ That code will process any additional parameters, and we simply need to handle t
 
 Finally, we filter our initial set of observation records, so this line:
 
-```
+```python
     observation_records = ObservationRecord.objects.all()
 ```
 
 will become this:
 
-```
+```python
     observation_records = ObservationRecord.objects.filter(target=target)
 ```
 
@@ -121,7 +121,7 @@ On Unix-based systems, [cron](https://linux.die.net/man/8/cron) can be used to a
 
 In the above case, the first five values, which can either be numbers or asterisks, represent elements of time. From left to right, they are minutes, hours, day of the month, month of the year, and day of the week. Our example would run a command every Wednesday (fourth day of the week, starting from 0) in June (sixth month of the year, starting from 1) at 2:30 AM.
 
-Scheduling can be made more complex as well--values can be comma-separated or presented as a range. Refer to the abundance of cron documentation for more information.
+Scheduling can be made more complex as well--values can be comma-separated or presented as a range. Refer to the abundance of cron documentation for more information. An excellent beginner's guide can be found [here](https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/).
 
 Now, how is cron called? Well, cron jobs are run by the system, and it reads the commands that need to be called from a cron table, or crontab. To edit this file, simple call `crontab -e`.
 
