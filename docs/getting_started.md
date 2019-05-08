@@ -23,10 +23,12 @@ backport:
 
     pip install dataclasses
 
-## Installing Django
+## Installing the TOM Toolkit and Django
 
-First, you'll need to install Django. We recommend using a
-[virtual environment](https://docs.python.org/3/tutorial/venv.html) for your project:
+First, we recommend using a
+[virtual environment](https://docs.python.org/3/tutorial/venv.html) for your
+project.
+This will keep your TOM python packages seperate from your system python packages.
 
     python3 -m venv tom_env/
 
@@ -36,30 +38,18 @@ Now that we have created the virtual environment, we can activate it:
 
 You should now see `(tom_env)` prepended to your terminal prompt.
 
-Now, install Django...
+Now, install the TOM Toolkit:
 
-    pip install django
+    pip install tomtoolkit==0.2.3
 
 ...and create a new project, just like in the tutorial:
 
     django-admin startproject mytom
 
 You should now have a fully functional standard Django installation inside the
-`mytom` folder.
+`mytom` folder, with the TOM dependencies installed as well.
 
-## Installing the TOM Toolkit
-
-The TOM Toolkit is a collection of Django apps that can be used in any Django
-project. To download it, use pip:
-
-    pip install https://github.com/TOMToolkit/tom_base/archive/master.zip
-
-Note: the toolkit is not available on PyPI yet, which is why we install from
-github, but it will be soon.
-
-The above command should pull down `tomtoolkit` and all it's dependencies.
-
-## Adding tomtoolkit to your Django project
+## Getting started with the `tom_setup` script.
 
 We ned to add the `tom_setup` app to our project's `INSTALLED_APPS`. Locate the
 `settings.py` file inside your project directory (usually in a subdirectory of the
