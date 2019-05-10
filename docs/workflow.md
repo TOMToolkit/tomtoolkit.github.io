@@ -19,7 +19,7 @@ into the TOM:
 * The Alert Module provides the functionality to create targets from alert brokers
 such as [MARS](https://mars.lco.global) and [ANTARES](https://antares.noao.edu/).
 These brokers generally provide alerts from transient phenomena as soon as they
-happen, and a scientist who is interesting in studying these phenomena can import
+happen, and a scientist who is interested in studying these phenomena can import
 these alerts as targets into their TOM to study in real time.
 
 * Online catalogs such as SIMBAD and the JPL Horizons contain information on
@@ -82,6 +82,6 @@ new data is acquired.
 
 Data is stored in the TOM toolkit by default, but many scientists may want to
 download the data somewhere else to do offline processing. Scientists can easily
-download data to their local machines, and the data module by default stored all
+download data to their local machines, and the data module by default stores all
 it's data on a local file system. However, it can be customized to store data on
 cloud services, like Amazon S3, when desired.
