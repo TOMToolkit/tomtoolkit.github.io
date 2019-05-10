@@ -185,3 +185,116 @@ Now if you select "LCOMultiFilter" from the list of observation facilities on a
 target you should see your new form:
 
 ![newform.png](/assets/img/customize_observations/newform.png)
+
+Is the form still too ugly for you? Trying playing with the layout definition to
+suit your needs.
+
+### Changing the form submission behavior
+
+If you are not familiar with the [LCO submission
+API](https://developers.lco.global/#observations) now might be a good time to take
+a look. The LCO Observation module uses this API to submit observations using the
+data provided in the form, so we need to modify how this happens. More
+specifically, we'd like to add two additional `Molecules` to our observation
+request, one for each of our additional filters and exposure times.
+
+Using the `observation_payaload()` method, we can use `super()` to get the
+original LCO module's observation request, then modify it to suit the needs of our
+`LCOMultiFilter` class:
+
+```python
+#lcomultifilter.py
+from tom_observations.facilities.lco import LCOFacility, LCOObservationForm, filter_choices
+from django import forms
+from crispy_forms.layout import Div
+
+
+class LCOMultiFilterForm(LCOObservationForm):
+    filter2 = forms.ChoiceField(choices=filter_choices)
+    exposure_time2 = forms.FloatField(min_value=0.1)
+    filter3 = forms.ChoiceField(choices=filter_choices)
+    exposure_time3 = forms.FloatField(min_value=0.1)
+
+    def layout(self):
+        return Div(
+                Div(
+                    Div(
+                        'group_id', 'proposal', 'ipp_value', 'observation_type', 'start', 'end',
+                        css_class='col'
+                    ),
+                    Div(
+                        'instrument_name', 'exposure_count', 'max_airmass',
+                        css_class='col'
+                    ),
+                    css_class='form-row'
+                ),
+                Div(
+                    Div(
+                        'filter', 'exposure_time',
+                        css_class='col'
+                    ),
+                    Div(
+                        'filter2', 'exposure_time2',
+                        css_class='col'
+                    ),
+                    Div(
+                        'filter3', 'exposure_time3',
+                        css_class='col'
+                    ),
+                    css_class='form-row'
+                )
+        )
+
+    def observation_payload(self):
+        payload = super().observation_payload()
+        molecule2 = payload['requests'][0]['molecules'][0].copy()
+        molecule3 = payload['requests'][0]['molecules'][0].copy()
+
+        molecule2['filter'] = self.cleaned_data['filter2']
+        molecule2['exposure_time'] = self.cleaned_data['exposure_time2']
+        molecule3['filter'] = self.cleaned_data['filter3']
+        molecule3['exposure_time'] = self.cleaned_data['exposure_time3']
+
+        payload['requests'][0]['molecules'].extend([molecule2, molecule3])
+        return payload
+
+
+class LCOMultiFilterFacility(LCOFacility):
+    name = 'LCOMultiFilter'
+    form = LCOMultiFilterForm
+```
+
+Let's go over what we did in this new `observation_payload()` method:
+
+1. Line 1: We call `super().observation_payload()` to get the observation request
+which the parent class (LCOFacility) would have called.
+2. Line 2-3 We copy the Request's Molecule into two new Molecules: `molecule2` and
+`molecule3`. These will be the additional Molecules we send to LCO.
+3. Lines 5-8: We set the value of these new Molecules's `filter` and
+`exposure_time` to the values we collected from our custom form.
+4. lines 10-11: Finally, we extend the original Request's Molecule array to
+include the 2 new Molecules we built. Return it and we're done!
+
+If you submit an observation request with the `LCOMultiFilter` observation module
+now you should see that it creates an observation request with LCO with three
+Molecules!
+
+### Summary
+
+Our original requirement was to be able to submit observations to LCO with some
+additional filters and exposure times. We accomplished this by:
+
+1. Creating a new observation module: a `LCOMultiFilterFacility` class and a
+`LCOMultiFilterForm`, both of which were child classes of the original
+`LCOFacility` class (since we wanted to keep most of the functionality intact) and
+then added this new class to our `TOM_FACILITY_CLASSES` setting.
+
+2. We added a few fields to `LCOMultiFilterForm` and modified it's layout to
+include these new fields using `layout()`.
+
+3. We implemented the `LCOMultiFilterForm` `observation_payload()` which used the
+parent's class return value and then modified it to suit our needs.
+
+This is a good example of Object Oriented Programming in Python. If you are
+curious about how this all works, we recommend reading up on OOP in general, as
+well as how objects in Python 3 work.
