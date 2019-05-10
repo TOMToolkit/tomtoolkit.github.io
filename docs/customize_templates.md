@@ -145,7 +145,7 @@ Instead of linking to an image hosted online already, we can display static file
 in our project directly. For this we will use [Django's static
 files](https://docs.djangoproject.com/en/2.1/howto/static-files/) capabilities.
 
-If you ran the tom_setup script, you should have a directly `static` at the top
+If you ran the tom_setup script, you should have a directory `static` at the top
 level of your project. Within this folder, make a directory `img`. In this folder,
 place an image you'd like to display on your homepage. For example, `mytom.jpg`.
 
