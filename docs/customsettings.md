@@ -83,7 +83,7 @@ visible to unauthenticated users. You might add the homepage ('/'), for example.
 
 Default: No default
 
-Can be either **SIDEREAL** or **NON_SIDEREAL**. This settings determins the
+Can be either **SIDEREAL** or **NON_SIDEREAL**. This settings determines the
 default target type for your TOM. TOMs can still create and work with targets of
 both types even after this option is set, but setting it to one of the values will
 optimize the workflow for that target type.

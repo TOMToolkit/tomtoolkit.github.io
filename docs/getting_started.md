@@ -4,7 +4,7 @@ title: Getting Started with the TOM Toolkit
 
 So you've decided to run a Target Observation Manager. This article will help you get started.
 
-The TOM Toolkit is a [Django](https://django-project.org) project. This means you'll be running
+The TOM Toolkit is a [Django](https://www.djangoproject.com/) project. This means you'll be running
 an application based on the Django framework when you run a TOM. If you decide to customize
 your TOM, you'll be working in Django. You'll likely need some basic understanding of python
 and we recommend all users work their way through the

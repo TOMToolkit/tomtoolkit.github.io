@@ -68,7 +68,7 @@ Of course, redshift does appear on our target's display page as well:
 
 ## Displaying extra fields in templates
 
-If we want to display the redshift in other places, we can use a template filer to
+If we want to display the redshift in other places, we can use a template filter to
 do that. For example, we might want to display the redshift value in the target
 list table.
 
