@@ -119,7 +119,7 @@ will become this:
 
 And our final finished command looks as follows:
 
-```
+```python
 from django.core.management.base import BaseCommand
 from tom_observations import facility
 from tom_observations.models import ObservationRecord
