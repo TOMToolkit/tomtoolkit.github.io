@@ -10,7 +10,7 @@ page.
 The TOM Toolkit (referred to as "the toolkit") provides a framework for
 developing web applications that serve the purposes described in the
 motivation. This means when users interact with a TOM they will be doing so via
-a web browser or through other internet-based protocols. 
+a web browser or through other internet-based protocols.
 Web-based technologies allow developers to create rich
 user interfaces, simplify distribution and choose from a huge variety of
 programming languages and frameworks.
@@ -121,7 +121,7 @@ apps](https://docs.djangoproject.com/en/2.2/intro/reusable-apps/) which are just
 python packages that are specifically meant to be used inside a Django project.
 The majority of the the toolkit's functionality is implemented in a series of
 Django apps. While most of the apps are required, some may be omitted entirely
-from a TOM if the functionality is not desired. 
+from a TOM if the functionality is not desired.
 
 The following describes each app that ships with the toolkit and its purpose.
 
@@ -201,6 +201,14 @@ package is special in that its sole purpose is to help TOM developers bootstrap
 new TOMs. See the [getting started](/docs/getting_started) guide for an example.
 The [tom_common](https://github.com/TOMToolkit/tom_base/tree/master/tom_common)
 package contains logic and data that doesn't fit anywhere else.
+
+## Database Layout
+The following diagram is an Entity-relationship Diagram (ERD). It is meant to
+display the relationship between tables in a database. In this case, it may help
+illustrate how the data from each of the toolkit's packages relate to each other.
+It is not exhaustive; many tables and rows have been omitted for brevity.
+
+[![db layout](/assets/img/architecture/erd.png)](/assets/img/architecture/erd.png)
 
 ## Feedback and bug reporting
 
