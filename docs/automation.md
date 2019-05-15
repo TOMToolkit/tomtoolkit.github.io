@@ -148,6 +148,7 @@ class Command(BaseCommand):
         facility_classes[record.facility].save_data_products(record)
 
     return 'Success!'
+```
 
 ## Automating a management command
 
