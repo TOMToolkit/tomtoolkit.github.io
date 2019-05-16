@@ -54,7 +54,7 @@ customize the toolkit in any significant fashion. The majority of the [guides
 found in the TOM toolkit documentation](/docs/) are simply Django concepts
 rewritten in a TOM context.
 
-## Extending and Customizing the TOM Toolkit.
+## Extending and Customizing the TOM Toolkit
 
 As mentioned before, Django is well known for its extendibility and modularity.
 The toolkit takes advantage of these strengths heavily. In many ways, the TOM
@@ -81,6 +81,23 @@ while still benefiting from the basic functionality that the toolkit provides.
 
 This is why we recommend TOM developers familiarize themselves with Django; most
 TOM Toolkit features are actually extended Django features.
+
+
+## Plugin Architecture
+Some areas of the TOM implement a plugin based architecture to support multiple
+implementations of a similar functionality. An example would be the
+`tom_observations` module in which every supported observatory is implemented
+as its own plugin. The `tom_catalogs` and `tom_alerts` work in the same way: the
+module defines the interface and generic functionality and each implementation
+fills in its own logic.
+
+This structure makes it easy for developers to write their own plugins which can
+then be shared and installed by others or even contributed to the main codebase.
+The [gemini.py
+module](https://github.com/TOMToolkit/tom_base/blob/master/tom_observations/facilities/gemini.py)
+is an observation module plugin contributed by Bryan Miller to enable the
+triggering of observation requests on the Gemini telescope via the TOM Toolkit.
+Thanks Bryan!
 
 ## Data Storage, Deployment and Tooling
 
