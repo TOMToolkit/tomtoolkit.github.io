@@ -83,7 +83,7 @@ This is why we recommend TOM developers familiarize themselves with Django; most
 TOM Toolkit features are actually extended Django features.
 
 
-## Plugin Architecture
+### Plugin Architecture
 Some areas of the TOM implement a plugin based architecture to support multiple
 implementations of a similar functionality. An example would be the
 `tom_observations` module in which every supported observatory is implemented
@@ -98,6 +98,19 @@ module](https://github.com/TOMToolkit/tom_base/blob/master/tom_observations/faci
 is an observation module plugin contributed by Bryan Miller to enable the
 triggering of observation requests on the Gemini telescope via the TOM Toolkit.
 Thanks Bryan!
+
+### Template Engine
+The toolkit is able to take advantage of Django's excellent [template
+engine](https://docs.djangoproject.com/en/2.2/topics/templates/). Part of the
+engine's power comes form the ability of templates to extend and override
+each other. This means a TOM developer can easily change the layout and style of
+any page without modifying the underlying framework's code directly. Entire pages
+may be replaced, or only "blocks" within a template.
+
+Compare theses screenshots of the [standard target detail
+page](/assets/img/architecture/standardlayout.png) and the [Global Supernova
+Project's target detail page](/assets/img/architecture/standardlayout.png), the
+latter taking heavy advantage of template inheritance.
 
 ## Data Storage, Deployment and Tooling
 
