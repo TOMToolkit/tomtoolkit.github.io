@@ -5,6 +5,10 @@ layout: default
 ## Introduction
 Start here if you are new to using the TOM Toolkit.
 
+[Architecture](/docs/tomarchitecture) - This document describes the
+architecture of the TOM Toolkit at a high level. Read this first if you're
+interested in how the TOM toolkit works.
+
 [Getting Started](/docs/getting_started) - First steps for getting a TOM
 up and running.
 
