@@ -109,7 +109,7 @@ may be replaced, or only "blocks" within a template.
 
 Compare theses screenshots of the [standard target detail
 page](/assets/img/architecture/standardlayout.png) and the [Global Supernova
-Project's target detail page](/assets/img/architecture/standardlayout.png), the
+Project's target detail page](/assets/img/architecture/snex2layout.png), the
 latter taking heavy advantage of template inheritance.
 
 ## Data Storage, Deployment and Tooling
