@@ -11,14 +11,16 @@ Django provides the ability to register actions using [management commands](http
 Let's walk through a command to download observation data every hour. The first thing to be done is to create a `management/commands` directory within your application. The structure should look like this:
 
 ```
-app/
-  __init__.py
-  models.py
-  management/
-    commands/
-      updatedata.py
-  tests.py
-  views.py
+mytom/
+├── manage.py
+└── app/
+    ├── __init__.py
+    ├── models.py
+    ├── tests.py
+    ├── views.py
+    └── management/
+        └── commands/
+            └── updatedata.py
 ```
 
 A management command simply needs a class called `Command` that inherits from `BaseCommand`, and a `handle` class method that contains the logic for the command.
@@ -76,7 +78,7 @@ class Command(BaseCommand):
         facility_classes[record.facility].update_observation_status(record.observation_id)
         facility_classes[record.facility].save_data_products(record)
 
-    return 'Success!`
+    return 'Success!'
 ```
 
 ### Adding parameters
@@ -97,6 +99,10 @@ That code will process any additional parameters, and we simply need to handle t
         target = Target.objects.get(pk=options['target_id'])
       except ObjectDoesNotExist:
         raise Exception('Invalid target id provided')
+        
+    facility_classes = {}
+    for facility_name in facility.get_service_classes():
+    ...
 ```
 
 Finally, we filter our initial set of observation records, so this line:
@@ -109,6 +115,39 @@ will become this:
 
 ```python
     observation_records = ObservationRecord.objects.filter(target=target)
+```
+
+And our final finished command looks as follows:
+
+```python
+from django.core.management.base import BaseCommand
+from tom_observations import facility
+from tom_observations.models import ObservationRecord
+
+
+class Command(BaseCommand):
+
+  help = 'Downloads data for all completed observations'
+  
+  def add_arguments(self, parser):
+    parser.add_argument('--target_id', help='Download data for a single target')
+
+  def handle(self, *args, **options):
+    if options['target_id']:
+      try:
+        target = Target.objects.get(pk=options['target_id'])
+      except ObjectDoesNotExist:
+        raise Exception('Invalid target id provided')
+    facility_classes = {}
+    for facility_name in facility.get_service_classes():
+      facility_classes[facility_name] = facility.get_service_class(facility_name)()
+    observation_records = ObservationRecord.objects.filter(target=target)
+    for record in observation_records:
+      if record.status not in facility_classes[record.facility].get_terminal_observing_states():
+        facility_classes[record.facility].update_observation_status(record.observation_id)
+        facility_classes[record.facility].save_data_products(record)
+
+    return 'Success!'
 ```
 
 ## Automating a management command

@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /about/
 ---
 
 ## What’s a TOM?

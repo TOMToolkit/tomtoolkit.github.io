@@ -68,7 +68,7 @@ Of course, redshift does appear on our target's display page as well:
 
 ## Displaying extra fields in templates
 
-If we want to display the redshift in other places, we can use a template filer to
+If we want to display the redshift in other places, we can use a template filter to
 do that. For example, we might want to display the redshift value in the target
 list table.
 
@@ -92,3 +92,27 @@ available in the template context:
 The result is the redshift value being printed on the template:
 
 ![redshift display](/assets/img/target_fields_doc/redshift_tag.png)
+
+## Working with extra fields programatically
+
+If you'd like to update or save extra fields to your targets in code, there are a
+few methods you can use. The simplest is to simply pass in a dictionary of extra data to your
+target's `save()` method using the `extras` keyword argument:
+
+```python
+target = Target.objects.get(name='example')
+target.save(extras={'foo': 42})
+```
+
+The example target above will now have an extra field "foo" with the value 42.
+
+For more precise control, you can access `TargetExtra` models directly. To remove
+an extra, for example:
+
+```python
+target = Target.objects.get(name='example')
+target_extra = target.targetextra_set.get(key='foo')
+target_extra.delete()
+```
+
+The above deleted the target extra on a target with the key of "foo".

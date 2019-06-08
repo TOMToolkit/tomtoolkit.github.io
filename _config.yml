@@ -5,7 +5,7 @@ github: https://github.com/TOMToolkit
 about: The TOM Toolkit is a framework for building software for the next generation of astronomy.
 disqus_shortname:
 google_analytics:
-avatar_url: /static/img/logo.png
+avatar_url: /static/img/logo-color.png
 
 enableTags: true
 tagarray: []

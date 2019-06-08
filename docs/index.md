@@ -5,6 +5,10 @@ layout: default
 ## Introduction
 Start here if you are new to using the TOM Toolkit.
 
+[Architecture](/docs/tomarchitecture) - This document describes the
+architecture of the TOM Toolkit at a high level. Read this first if you're
+interested in how the TOM toolkit works.
+
 [Getting Started](/docs/getting_started) - First steps for getting a TOM
 up and running.
 
@@ -29,6 +33,10 @@ an Alert Broker module to add new sources of targets to your TOM.
 [Running Custom Code Hooks](/docs/custom_code) - Learn how to run your own scripts
 when certain actions happen within your TOM (for example, an observation
 completes).
+
+[Changing Request Submission Behavior](/docs/customize_observations) - Learn how
+to customize the LCO Observation Module in order to add additional parameters to
+observation requests sent to the LCO Network.
 
 [Creating Plots from TOM Data](/docs/plotting_data) - Learn how to create plots
 using plot.ly and your TOM data to display anywhere in your TOM.
