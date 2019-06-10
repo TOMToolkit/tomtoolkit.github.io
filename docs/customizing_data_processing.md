@@ -82,7 +82,9 @@ class CustomDataProcessor(DataProcessor):
 Then, just add the path to your `CustomDataProcessor` class file to your TOM settings.py:
 
 ```python
+...
 DATA_PROCESSOR_CLASS = 'mytom.custom_data_processor.CustomDataProcessor'
+...
 ```
 
 As long as the `CustomDataProcessor` returns an object with the same type as the superclass implementation, you won't
