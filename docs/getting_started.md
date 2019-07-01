@@ -40,7 +40,7 @@ You should now see `(tom_env)` prepended to your terminal prompt.
 
 Now, install the TOM Toolkit:
 
-    pip install tomtoolkit==0.2.4
+    pip install tomtoolkit==0.3.1
 
 ...and create a new project, just like in the tutorial:
 
