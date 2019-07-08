@@ -113,7 +113,7 @@ methods enable the conversion of remote alert data into TOM-specific
 alerts and targets.
 
 #### `fetch_alerts` Class Method
-`fetch_alerts` is used to query the remote broker, and return a list
+`fetch_alerts` is used to query the remote broker, and return an iterator
 of results depending on the parameters passed into the query, so that
 these results may be displayed on the query results page. In our case, `fetch_alerts`
 will only filter on name, but this can be easily extended to other query parameters.
@@ -124,32 +124,17 @@ def fetch_alerts(clazz, parameters):
     response = requests.get(broker_url)
     response.raise_for_status()
     test_alerts = response.json()
-    return [alert for alert in test_alerts if alert['name'] == parameters['name']]
+    return iter([alert for alert in test_alerts if alert['name'] ==
+    parameters['name']])
 ```
+**Why an iterator?** Because some alert brokers work by sending streams, not fully
+evaluated lists. This simple example broker could easily return a list (in fact we
+are coercing the list into an iterator!) but that would not work in the model
+where a broker is sending an unending stream of alerts.
 
 Our implementation will get a response from our test broker source, check that our
-request was successful, and return a list of all alerts whose name field matches the
+request was successful, and return a iterator of alerts whose name field matches the
 name passed into the query.
-
-#### `fetch_alert` Class Method
-`fetch_alert` is similar to `fetch_alerts`, but fetches a single alert with a given
-`alert_id`. Once a query has been performed, any resulting alert may be made into
-a TOM target directly from the query results page.
-
-```python
-@classmethod
-def fetch_alert(clazz, alert_id):
-    response = requests.get(broker_url)
-    test_alerts = response.json()
-    response.raise_for_status()
-    for alert in test_alerts:
-        if (alert['id'] == int(alert_id)):
-            return alert
-    return None
-```
-
-We query the broker, obtain our JSON data, and return the alert whose id
-matches the `alert_id` parameter, so a TOM Alert may be created from it.
 
 #### `to_generic_alert` Class Method
 In order to standardize alerts and display them in a consistent manner,
@@ -180,23 +165,11 @@ url=broker_url,
 ...
 ```
 
-#### `to_target` Class Method
-To convert our new alert into a TOM Target, we'll use `to_target`. Just like
-`to_generic_alert`, we'll simply set the relevant TOM Target parameters to
-the fields from our alert.
+### Other methods
 
-```python
-@classmethod
-def to_target(clazz, alert):
-    return Target(
-        identifier=alert['id'],
-        name=alert['name'],
-        type='SIDEREAL',
-        designation='MY ALERT',
-        ra=alert['ra'],
-        dec=alert['dec'],
-    )
-```
+`fetch_alerts` and `to_generic_alert` are the only methods required for your
+broker module to function. Of course you are free to add any number of additional
+methods or attributes to the module that you deem necessary.
 
 ## Using Our New Alert Broker
 Now that we've created our TOM alert broker, let's hook it into our TOM
