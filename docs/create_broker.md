@@ -51,7 +51,7 @@ Our custom broker module relies on the TOM Toolkit modules that were installed i
 to import the necessary modules.
 
 ```python
-from tom_alerts.alerts import GenericQueryForm, GenericAlert
+from tom_alerts.alerts import GenericQueryForm, GenericAlert, GenericBroker
 from tom_alerts.models import BrokerQuery
 from tom_targets.models import Target
 ```
@@ -102,7 +102,7 @@ will simply be 'MyBroker', and the form will be `MyBrokerForm` - the form that w
 just defined!
 
 ```python
-class MyBroker:
+class MyBroker(GenericBroker):
     name = 'MyBroker'
     form = MyBrokerForm
 ```
