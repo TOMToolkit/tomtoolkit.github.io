@@ -16,7 +16,9 @@ Ready to go? Let's get started.
 
 ## Prerequisites
 
-The TOM toolkit requires Python >= 3.7
+The TOM toolkit requires Python >= 3.7 and numpy to be installed:
+
+    pip install numpy
 
 If you are using Python 3.6 and cannot upgrade to 3.7, install the `dataclasses`
 backport:
@@ -40,7 +42,7 @@ You should now see `(tom_env)` prepended to your terminal prompt.
 
 Now, install the TOM Toolkit:
 
-    pip install tomtoolkit==0.3.1
+    pip install tomtoolkit
 
 ...and create a new project, just like in the tutorial:
 
