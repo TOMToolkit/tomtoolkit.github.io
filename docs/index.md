@@ -27,6 +27,9 @@ built in TOM templates to change the look and feel of your TOM.
 [Adding Custom Target Fields](/docs/target_fields) - Learn how to add custom
 fields to your TOM Targets if the defaults do not suffice.
 
+[Adding Custom Data Processing](/docs/customizing_data_processing) - Learn how
+you can process data into your TOM from uploaded data products.
+
 [Building a TOM Alert Broker](/docs/create_broker) - Learn how to build
 an Alert Broker module to add new sources of targets to your TOM.
 
