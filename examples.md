@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Example TOMs
+permalink: /examples/
 ---
 
 ## SNEx
