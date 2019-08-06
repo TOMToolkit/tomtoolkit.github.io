@@ -121,7 +121,7 @@ form already has fields for `filter` and `exposure_time`, so we'll overwrite the
 entire layout so that they appear next to the new fields we added.
 
 The `LCOObservationForm` has a method `layout()` that returns the desired layout
-using the [cripsy forms Layout](https://django-crispy-forms.readthedocs.io/en/d-0/layouts.html)
+using the [crispy forms Layout](https://django-crispy-forms.readthedocs.io/en/d-0/layouts.html)
 class. Familiarizing yourself with the basic functionality of crispy forms would
 be a good idea if you wish to deeply customize your observation module's form.
 
@@ -144,7 +144,7 @@ class LCOMultiFilterForm(LCOObservationForm):
         return Div(
                 Div(
                     Div(
-                        'group_id', 'proposal', 'ipp_value', 'observation_type', 'start', 'end',
+                        'name', 'proposal', 'ipp_value', 'observation_type', 'start', 'end',
                         css_class='col'
                     ),
                     Div(
@@ -176,7 +176,7 @@ class LCOMultiFilterFacility(LCOFacility):
     form = LCOMultiFilterForm
 ```
 
-Take a look at the layout and compare it to the [existing lco layout](https://github.com/TOMToolkit/tom_base/blob/master/tom_observations/facilities/lco.py#L161). A second
+Take a look at the layout and compare it to the [existing lco layout](https://github.com/TOMToolkit/tom_base/blob/master/tom_observations/facilities/lco.py#L169). A second
 row has been added that includes all the filter choices. Note that the original
 `filter` and `exposure_time` have been moved from their original location to the
 new row.
@@ -195,10 +195,10 @@ If you are not familiar with the [LCO submission
 API](https://developers.lco.global/#observations) now might be a good time to take
 a look. The LCO Observation module uses this API to submit observations using the
 data provided in the form, so we need to modify how this happens. More
-specifically, we'd like to add two additional `Molecules` to our observation
+specifically, we'd like to add two additional `Configuration` to our observation
 request, one for each of our additional filters and exposure times.
 
-Using the `observation_payaload()` method, we can use `super()` to get the
+Using the `observation_payload()` method, we can use `super()` to get the
 original LCO module's observation request, then modify it to suit the needs of our
 `LCOMultiFilter` class:
 
@@ -207,7 +207,7 @@ original LCO module's observation request, then modify it to suit the needs of o
 from tom_observations.facilities.lco import LCOFacility, LCOObservationForm, filter_choices
 from django import forms
 from crispy_forms.layout import Div
-
+from copy import deepcopy
 
 class LCOMultiFilterForm(LCOObservationForm):
     filter2 = forms.ChoiceField(choices=filter_choices)
@@ -219,11 +219,11 @@ class LCOMultiFilterForm(LCOObservationForm):
         return Div(
                 Div(
                     Div(
-                        'group_id', 'proposal', 'ipp_value', 'observation_type', 'start', 'end',
+                        'name', 'proposal', 'ipp_value', 'observation_type', 'start', 'end',
                         css_class='col'
                     ),
                     Div(
-                        'instrument_name', 'exposure_count', 'max_airmass',
+                        'instrument_type', 'exposure_count', 'max_airmass',
                         css_class='col'
                     ),
                     css_class='form-row'
@@ -247,15 +247,13 @@ class LCOMultiFilterForm(LCOObservationForm):
 
     def observation_payload(self):
         payload = super().observation_payload()
-        molecule2 = payload['requests'][0]['molecules'][0].copy()
-        molecule3 = payload['requests'][0]['molecules'][0].copy()
-
-        molecule2['filter'] = self.cleaned_data['filter2']
-        molecule2['exposure_time'] = self.cleaned_data['exposure_time2']
-        molecule3['filter'] = self.cleaned_data['filter3']
-        molecule3['exposure_time'] = self.cleaned_data['exposure_time3']
-
-        payload['requests'][0]['molecules'].extend([molecule2, molecule3])
+        configuration2 = deepcopy(payload['requests'][0]['configurations'][0])
+        configuration3 = deepcopy(payload['requests'][0]['configurations'][0])
+        configuration2['instrument_configs'][0]['optical_elements']['filter'] = self.cleaned_data['filter2']
+        configuration2['instrument_configs'][0]['exposure_time'] = self.cleaned_data['exposure_time2']
+        configuration3['instrument_configs'][0]['optical_elements']['filter'] = self.cleaned_data['filter3']
+        configuration3['instrument_configs'][0]['exposure_time'] = self.cleaned_data['exposure_time3']
+        payload['requests'][0]['configurations'].extend([configuration2, configuration3])
         return payload
 
 
@@ -268,16 +266,16 @@ Let's go over what we did in this new `observation_payload()` method:
 
 1. Line 1: We call `super().observation_payload()` to get the observation request
 which the parent class (LCOFacility) would have called.
-2. Line 2-3 We copy the Request's Molecule into two new Molecules: `molecule2` and
-`molecule3`. These will be the additional Molecules we send to LCO.
-3. Lines 5-8: We set the value of these new Molecules's `filter` and
+2. Line 2-3 We copy the Request's Configuration into two new Configurations: `configuration2` and
+`configuration3`. These will be the additional Configuration we send to LCO.
+3. Lines 5-8: We set the value of these new Configuration `filter` and
 `exposure_time` to the values we collected from our custom form.
-4. lines 10-11: Finally, we extend the original Request's Molecule array to
-include the 2 new Molecules we built. Return it and we're done!
+4. lines 10-11: Finally, we extend the original Request's Configuration array to
+include the 2 new Configuration we built. Return it and we're done!
 
 If you submit an observation request with the `LCOMultiFilter` observation module
 now you should see that it creates an observation request with LCO with three
-Molecules!
+Configuration!
 
 ### Summary
 
