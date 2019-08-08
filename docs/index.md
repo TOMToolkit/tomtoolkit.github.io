@@ -81,7 +81,8 @@ Yes. First install jupyterlab into your TOM virtualenv:
 
     pip install jupyterlab
 
-Then use the following management command to launch the notebook server:
+Inside your TOM directory, use the following management command to launch the
+notebook server:
 
     ./manage.py shell_plus --notebook
 
