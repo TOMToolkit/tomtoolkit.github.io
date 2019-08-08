@@ -1,5 +1,5 @@
 ---
-title: Customizing Your TOM
+title: Customizing TOM Templates
 ---
 
 So you've got a TOM up and running, and your homepage looks something like this:
