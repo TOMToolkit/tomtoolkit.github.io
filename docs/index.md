@@ -24,8 +24,12 @@ add new functionality.
 [Custom Settings](/docs/customsettings) - Settings available to the TOM Toolkit
 which you may want to configure.
 
-[Customizing your TOM](/docs/customize_templates) - Learn how to override
+[Customizing TOM Templates](/docs/customize_templates) - Learn how to override
 built in TOM templates to change the look and feel of your TOM.
+
+[Adding new Pages to your TOM](/docs/adding_pages) - Learn how to add entirely new
+pages to your TOM, displaying static html pages or dynamic database-driven
+content.
 
 [Adding Custom Target Fields](/docs/target_fields) - Learn how to add custom
 fields to your TOM Targets if the defaults do not suffice.
@@ -138,3 +142,6 @@ urlpatterns = [
 
 And make sure `newpage.html` is located within the `templates/` directory in your
 project.
+
+This will make the contents of `newpage.html` available under the path
+[/newpage/](http://127.0.0.1/newpage/).
