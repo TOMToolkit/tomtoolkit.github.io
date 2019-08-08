@@ -75,6 +75,19 @@ the cloud storage service Amazon S3 instead of your local disk.
 
 ## Frequently Asked Questions
 
+### Can I use Jupyter Notebooks with my TOM?
+
+Yes. First install jupyterlab into your TOM virtualenv:
+
+    pip install jupyterlab
+
+Then use the following management command to launch the notebook server:
+
+    ./manage.py shell_plus --notebook
+
+Under the new notebook menu, choose "Django Shell-Plus". This will create a new
+notebook in the correct TOM context.
+
 ### I try to observe a target with LCO but get an error.
 
 You might not have added your LCO api key to your settings file under the
