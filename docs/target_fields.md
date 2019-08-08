@@ -66,6 +66,15 @@ Of course, redshift does appear on our target's display page as well:
 
 ![redshift display](/assets/img/target_fields_doc/redshift_display.png)
 
+To hide extra fields from the target page, we can set the "hidden" key (this
+doesn't affect filtering and searching):
+
+```python
+ EXTRA_FIELDS = [
+     {'name': 'redshift', 'type': 'number', 'hidden': True},
+ ]
+```
+
 ## Displaying extra fields in templates
 
 If we want to display the redshift in other places, we can use a template filter to
