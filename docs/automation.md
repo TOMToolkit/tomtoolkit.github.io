@@ -8,12 +8,38 @@ Your TOM may have a need to run a task on a regular schedule without human inter
 
 Django provides the ability to register actions using [management commands](https://docs.djangoproject.com/en/2.2/howto/custom-management-commands/). These actions can then be called from the command line.
 
+### Starting a new django "app"
+
+Django recommends creating separate "apps" to contain your management commands
+(among other things, like custom models and views) so we'll start with creating a
+new app called "myapp". You can read more about Django reusable apps
+[in the official
+documentation](https://docs.djangoproject.com/en/2.2/intro/tutorial01/#creating-the-polls-app).
+
+    ./manage.py startapp myapp
+
+Now your tom should have a new folder in the root directory called "myapp". Next
+we need to tell Django to use this new application. In your `settings.py` file
+file the `INSTALLED_APPS` settings and add `myapp.apps.MyappConfig` to the array:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    ...
+    'myapp.apps.MyappConfig'
+]
+```
+
+Now we are read to start writing our new commands.
+
+### Writing the command
+
 Let's walk through a command to download observation data every hour. The first thing to be done is to create a `management/commands` directory within your application. The structure should look like this:
 
 ```
 mytom/
 ├── manage.py
-└── app/
+└── myapp/
     ├── __init__.py
     ├── models.py
     ├── tests.py
@@ -99,7 +125,7 @@ That code will process any additional parameters, and we simply need to handle t
         target = Target.objects.get(pk=options['target_id'])
       except ObjectDoesNotExist:
         raise Exception('Invalid target id provided')
-        
+
     facility_classes = {}
     for facility_name in facility.get_service_classes():
     ...
@@ -128,7 +154,7 @@ from tom_observations.models import ObservationRecord
 class Command(BaseCommand):
 
   help = 'Downloads data for all completed observations'
-  
+
   def add_arguments(self, parser):
     parser.add_argument('--target_id', help='Download data for a single target')
 
