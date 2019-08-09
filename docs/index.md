@@ -93,6 +93,16 @@ notebook server:
 Under the new notebook menu, choose "Django Shell-Plus". This will create a new
 notebook in the correct TOM context.
 
+### What are tags on the Target form?
+You can add tags to targets via the target create/update forms or
+programmatically. These are meant to be arbitrary data associated with a target.
+You can then search for targets via tags on the target list page, by entering the
+"key" and/or "value" fields in the filter list. They will also be displayed on the
+target detail pages.
+
+If you'd like to have more control over extra target data, see the documentation
+on [Adding Custom Target Fields](/docs/target_fields).
+
 ### I try to observe a target with LCO but get an error.
 
 You might not have added your LCO api key to your settings file under the
