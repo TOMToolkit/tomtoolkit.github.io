@@ -64,10 +64,9 @@ The workflow for submitting a code change is, more or less, the following:
 ![Pull request](../assets/img/pull-request.png)
 
 8. Be sure to click "compare across forks" in order to see your branch!
-
 ![Compare across forks](../assets/img/compare-across-forks.png)
 
-8. We may ask for some updates to your pull request, so revise as necessary and push when revisions are complete. This will automatically update your pull request.
+9. We may ask for some updates to your pull request, so revise as necessary and push when revisions are complete. This will automatically update your pull request.
 
 ### Branch Naming<a name="branch-naming"></a>
 
@@ -77,4 +76,12 @@ Branch names should be prefixed with the purpose of the branch, be it a bugfix o
   bugfix/fix-typo-target-detail
   feature/reticulating-splines
   enhancement/refactor-planning-tool
+```
+
+### Code Style
+
+We recommend that you use a linter, as all pull requests must pass a `pycodestyle` check. We also recommend configuring your editor to automatically remove trailing whitespace, add newlines on save, and other such helpful style corrections. You can check if your styling will meet standards before submitting a pull request by doing a `pip install pycodestyle` and running the same command our Travis build does:
+
+```
+pycodestyle tom_* --exclude=*/migrations/* --max-line-length=120
 ```
