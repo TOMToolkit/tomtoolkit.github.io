@@ -15,7 +15,7 @@ Please include as much detail as possible, as well as the steps taken that trigg
 
 ## Requesting Features
 
-Like issues, feature and enhancement requests should be done via the same [Github issues page](https://github.com/TOMToolkit/tom_base/issues) of the tom_base project.
+Like issues, feature and enhancement requests should be done via the same [Github issues page](https://github.com/TOMToolkit/tom_base/issues) of the tom_base project. This is also a great place to see what's being worked on and what's already been requested, which will allow you to voice support for a backlogged feature to be reprioritized.
 
 ## Support
 
