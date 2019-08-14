@@ -58,7 +58,7 @@ class MyObservationFacilityForm(GenericObservationForm):
 
 class MyObservationFacility(GenericObservationFacility):
     name = 'MyFacility'
-    form = MyObservationFacilityForm
+    observation_types = [('IMAGING', 'Imaging')]
 ```
 
 We'll go over what these lines mean soon. First, we'll add a setting to our
@@ -95,6 +95,86 @@ users to create an observation. We can submit observations programatically, but 
 is also nice to have a GUI for our users to use.  The `GenericObservationForm`
 class, just like the previous super class, contains logic and layout that all
 observation facility form classes should contain.
+
+### Implementing observation form selection
+
+You may have noticed that we added a variable for `observation_types` in
+`MyObservationFacility`. Even if the facility you're adding only supports one
+observation type, you'll still need to add a list of `observation_types` tuples
+so that the TOM view knows what options to offer the user. The tuples should be
+2-tuples, with the first element being the type enum, and the second element
+being the display name of the observation type.
+
+If you only have one type of observation coming through, or you simply plan to
+put all of the submission logic in a single form, `MyObservationFacility` can look
+like it does above:
+
+```python
+from tom_observations.facility import GenericObservationFacility, GenericObservationForm
+
+
+class MyObservationFacilityForm(GenericObservationForm):
+    pass
+
+
+class MyObservationFacility(GenericObservationFacility):
+    name = 'MyFacility'
+    observation_types = [('OBSERVATION', 'Observation')]
+```
+
+However, if you want to separate your logic into multiple forms, either by observation
+types, or even just for multiple simple forms with a number of preselected options,
+`MyObservationFacility` may look like this:
+
+```python
+from tom_observations.facility import GenericObservationFacility, GenericObservationForm
+
+
+class MyObservationFacilityForm(GenericObservationForm):
+    pass
+
+
+class MyObservationFacility(GenericObservationFacility):
+    name = 'MyFacility'
+    observation_types = [('IMAGING', 'Imaging'), ('SPECTROSCOPY', 'Spectroscopy')]
+```
+
+Now, we've defined what types of observations our facility will support, but we need to
+choose the right one. The `GenericObservationFacility` also has a method you'll need to
+implement that decides which form to render to the user called `get_form`. If you're only
+adding one form to your facility, it can look as simple as this:
+
+```python
+class MyObservationFacility(GenericObservationFacility):
+    name = 'MyFacility'
+    observation_types = [('OBSERVATION', 'Observation')]
+
+    def get_form(self, observation_type):
+        return MyObservationFacilityForm
+```
+
+If you're implementing multiple observation forms, however, you'll need a small amount
+of business logic to return the correct form:
+
+```python
+class MyObservationFacilityImagingForm(GenericObservationForm):
+    pass
+
+
+class MyObservationFacilitySpectroscopyForm(GenericObservationForm):
+    pass
+
+
+class MyObservationFacility(GenericObservationFacility):
+    name = 'MyFacility'
+    observation_types = [('IMAGING', 'Imaging'), ('SPECTROSCOPY', 'Spectroscopy')]
+
+    def get_form(self, observation_type):
+        if observation_type == 'IMAGING':
+            return MyObservationFacilityImagingForm
+        else:
+            return MyObservationFacilitySpectroscopyForm
+```
 
 ### Implementing observation submission
 
