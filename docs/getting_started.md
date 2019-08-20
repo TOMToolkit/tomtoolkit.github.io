@@ -24,6 +24,14 @@ If you are using Python 3.6 and cannot upgrade to 3.7, install the `dataclasses`
 backport:
 
     pip install dataclasses
+    
+If you are on MacOS, you will need to install libmagic for filetype detection. It's easy to install with Homebrew:
+
+    brew install libmagic
+    
+If you need to install Homebrew, there is a single-line installation command that can be found on the [website](brew.sh):
+
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ## Installing the TOM Toolkit and Django
 
