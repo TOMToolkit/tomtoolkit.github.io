@@ -22,7 +22,7 @@ other additions!):
     ./manage.py startapp myplots
 
 This will create a new [Django
-app](https://docs.djangoproject.com/en/2.1/intro/tutorial07/) in your project
+app](https://docs.djangoproject.com/en/2.1/intro/tutorial01/#creating-the-polls-app) in your project
 named myplots:
 
     myplots
