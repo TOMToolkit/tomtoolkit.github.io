@@ -40,14 +40,6 @@ you can process data into your TOM from uploaded data products.
 [Building a TOM Alert Broker](/docs/create_broker) - Learn how to build
 an Alert Broker module to add new sources of targets to your TOM.
 
-[Building a TOM Observation Facility Module](/docs/observation_module) - Learn to
-build a module which will allow your TOM to submit observation requests to
-observatories.
-
-[Running Custom Code Hooks](/docs/custom_code) - Learn how to run your own scripts
-when certain actions happen within your TOM (for example, an observation
-completes).
-
 [Changing Request Submission Behavior](/docs/customize_observations) - Learn how
 to customize the LCO Observation Module in order to add additional parameters to
 observation requests sent to the LCO Network.
@@ -60,6 +52,18 @@ access to targets in your TOM.
 
 [Automating Tasks](/docs/automation) - Run commands automatically to keep your TOM
 working even when you aren't
+
+## Advanced Topics
+[Background Tasks](/docs/backgroundtasks) - Learn how to set up an aysnchronous
+task library to handle long running and/or concurrent functions.
+
+[Building a TOM Observation Facility Module](/docs/observation_module) - Learn to
+build a module which will allow your TOM to submit observation requests to
+observatories.
+
+[Running Custom Code Hooks](/docs/custom_code) - Learn how to run your own scripts
+when certain actions happen within your TOM (for example, an observation
+completes).
 
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
