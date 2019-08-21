@@ -80,6 +80,9 @@ the cloud storage service Amazon S3 instead of your local disk.
 
 [Contribution Guide](/docs/contributing) - If you find an issue, you need help with your TOM, you have a useful idea, or you wrote a module you'd like to be included in the TOM Toolkit, start with the contribution guide.
 
+## Support
+
+[Support Guide](/docs/support) - Looking for help? Want to request a feature? Have questions about Github Issues? Take a look at the support guide.
 
 ## Frequently Asked Questions
 

@@ -2,24 +2,7 @@
 title: Contribute to the TOM Toolkit
 ---
 
-The page will go over the process for reporting issues, requesting features, getting
-support, and contributing to the TOM Toolkit.
-
-## Reporting Issues
-
-Issue reporting can be done via the [Github issues page](https://github.com/TOMToolkit/tom_base/issues)
-of the tom_base project. Reporting an issue requires a Github account, but provides an easy way for
-developers to ask follow-up questions about an issue in order to resolve it.
-
-Please include as much detail as possible, as well as the steps taken that trigger the issue, and be sure to tag it with the "bug" tag!
-
-## Requesting Features
-
-Like issues, feature and enhancement requests should be done via the same [Github issues page](https://github.com/TOMToolkit/tom_base/issues) of the tom_base project.
-
-## Support
-
-If you're looking for help with some aspect of your TOM, the [Github issues page](https://github.com/TOMToolkit/tom_base/issues) is once again the place to go. The "question" or "help wanted" tags should be very useful when looking for support, and the TOM Toolkit developers are more than happy to provide the help necessary to get your TOM running. You may also want to peruse the [Closed Issues](https://github.com/TOMToolkit/tom_base/issues?q=is%3Aissue+is%3Aclosed), where someone may have already had (and solved!) your problem.
+This page will go over the process for contributing to the TOM Toolkit.
 
 ## Contributing Code/Documentation
 
@@ -64,10 +47,9 @@ The workflow for submitting a code change is, more or less, the following:
 ![Pull request](../assets/img/pull-request.png)
 
 8. Be sure to click "compare across forks" in order to see your branch!
-
 ![Compare across forks](../assets/img/compare-across-forks.png)
 
-8. We may ask for some updates to your pull request, so revise as necessary and push when revisions are complete. This will automatically update your pull request.
+9. We may ask for some updates to your pull request, so revise as necessary and push when revisions are complete. This will automatically update your pull request.
 
 ### Branch Naming<a name="branch-naming"></a>
 
@@ -77,4 +59,12 @@ Branch names should be prefixed with the purpose of the branch, be it a bugfix o
   bugfix/fix-typo-target-detail
   feature/reticulating-splines
   enhancement/refactor-planning-tool
+```
+
+### Code Style
+
+We recommend that you use a linter, as all pull requests must pass a `pycodestyle` check. We also recommend configuring your editor to automatically remove trailing whitespace, add newlines on save, and other such helpful style corrections. You can check if your styling will meet standards before submitting a pull request by doing a `pip install pycodestyle` and running the same command our Travis build does:
+
+```
+pycodestyle tom_* --exclude=*/migrations/* --max-line-length=120
 ```
