@@ -240,6 +240,54 @@ It is not exhaustive; many tables and rows have been omitted for brevity.
 
 [![db layout](/assets/img/architecture/erd.png)](/assets/img/architecture/erd.png)
 
+## Models
+Django models are the classes that map to the database tables in your Django application. The 
+TOM Toolkit models and the rationale behind them do are largely intuitive, but may require some 
+explanation.
+
+### Target
+The `Target` model is relatively self-evident--it stores the data that describes the 
+targets in your TOM. By default, that includes things like name, type, coordinates, and 
+ephemerides.
+
+### ObservationRecord
+The `ObservationRecord` model describes an individual observation request for a single target. 
+It stores the target as a foreign key, and can optionally store facility information and the 
+parameters submitted for the observation.
+
+### DataProduct
+The `DataProduct` model can refer to a number of different things, but generally refers to a 
+single file that is associated with a `Target` and optionally an `ObservationRecord`. A 
+`DataProduct` has one of a number of tags, which at present include the following:
+
+- Photometry, a file containing photometric data
+- FITS, any FITS file not falling into the other categories
+- Spectroscopy, a file containing spectroscopic data
+- Image, a file containing image data, such as a JPEG or PNG
+
+A `DataProduct` type is file format-agnostic and refers to the data contained in the file, 
+rather than the format itself. The type is necessary for making decisions on which operations 
+can be executed using the data in a file.
+
+### ReducedDatum
+A `ReducedDatum` is a single point of data associated with a `Target` and optionally a 
+`DataProduct`. The single data point is typically a single point of photometry or an individual 
+spectrum. The `ReducedDatum` model has the following fields, in addition to its aforementioned 
+foreign key relationships:
+
+- `data_type` is maintained on both the `ReducedDatum` and `DataProduct` for the 
+case when data is brought in from another source, such as a broker
+- The `source_name` optionally refers to the original source of the data. The 
+intent of this field was to track data ingested from brokers, but could potentially be used for 
+other purposes.
+- `source_location` optionally gives a hard location to the source--for a 
+broker, it would be a link to the original alert.
+- The `timestamp` time at which the datum was produced.
+- `value` is a `TextField` that can take any series of data. As implemented, photometry 
+is stored as JSON with keys for magnitude and error, but the `TextField` provides flexibility for 
+additional photometry values on the datum. Spectroscopy is also stored as JSON, with keys for 
+`magnitude` and `flux`.
+
 ## Feedback and bug reporting
 
 We hope the TOM Toolkit is helpful to you and your project. If you have any
