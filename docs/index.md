@@ -65,6 +65,9 @@ observatories.
 when certain actions happen within your TOM (for example, an observation
 completes).
 
+[Scripting your TOM with Jupyter Notebooks](/docs/scripts/) - Use a Jupyer
+notebook (or just a pythong console/scripts) to interact directly with your TOM.
+
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
 deploy it somewhere so it is permanently accessible by you and your collegues.
@@ -99,6 +102,9 @@ notebook server:
 
 Under the new notebook menu, choose "Django Shell-Plus". This will create a new
 notebook in the correct TOM context.
+
+There is also a [tutorial](/docs/scripts) on interacting with your TOM using
+Jupyter notebooks.
 
 ### What are tags on the Target form?
 You can add tags to targets via the target create/update forms or
