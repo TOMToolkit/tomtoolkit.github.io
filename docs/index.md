@@ -72,6 +72,9 @@ notebook (or just a pythong console/scripts) to interact directly with your TOM.
 Once you've got a TOM up and running on your machine, you'll probably want to
 deploy it somewhere so it is permanently accessible by you and your collegues.
 
+[General Deployment Tips](/docs/deployment_tips) - Read this first before
+deploying your TOM for others to use.
+
 [Deploy to Heroku](/docs/deployment_heroku) - [Heroku](https://heroku.com) is a
 PaaS that allows you to publicly deploy your web applications without the need
 for managing the infrastructure yourself.
