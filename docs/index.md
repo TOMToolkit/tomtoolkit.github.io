@@ -54,7 +54,7 @@ access to targets in your TOM.
 working even when you aren't
 
 ## Advanced Topics
-[Background Tasks](/docs/backgroundtasks) - Learn how to set up an aysnchronous
+[Background Tasks](/docs/backgroundtasks) - Learn how to set up an asynchronous
 task library to handle long running and/or concurrent functions.
 
 [Building a TOM Observation Facility Module](/docs/observation_module) - Learn to
@@ -65,12 +65,12 @@ observatories.
 when certain actions happen within your TOM (for example, an observation
 completes).
 
-[Scripting your TOM with Jupyter Notebooks](/docs/scripts/) - Use a Jupyer
-notebook (or just a pythong console/scripts) to interact directly with your TOM.
+[Scripting your TOM with Jupyter Notebooks](/docs/scripts) - Use a Jupyter
+notebook (or just a python console/scripts) to interact directly with your TOM.
 
 ## Deployment
 Once you've got a TOM up and running on your machine, you'll probably want to
-deploy it somewhere so it is permanently accessible by you and your collegues.
+deploy it somewhere so it is permanently accessible by you and your colleagues.
 
 [General Deployment Tips](/docs/deployment_tips) - Read this first before
 deploying your TOM for others to use.
