@@ -83,7 +83,7 @@ this:
 
     dataclasses
     django
-    https://github.com/TOMToolkit/tom_base/archive/master.zip
+    tomtoolkit
 
 Let's add 2 more lines: one for [gunicorn](https://gunicorn.org/), a high
 performance http server and
@@ -93,7 +93,7 @@ look something like this:
 
     dataclasses
     django
-    https://github.com/TOMToolkit/tom_base/archive/master.zip
+    tomtoolkit
     gunicorn
     django-heroku
 
