@@ -46,7 +46,9 @@ urls:
     - text: Documentation
       url: /docs/
     - text: Examples
-      url: /examples
+      url: /examples/
+    - text: Plugins
+      url: /plugins/
     - text: Github
       url: 'https://github.com/TOMToolkit'
 
