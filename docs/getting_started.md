@@ -105,7 +105,8 @@ Your new TOM should now be running on [http://127.0.0.1:8000](http://127.0.0.1:8
 If you're on Mac OS, it should be noted that the Antares client library has a dependency 
 that only supports Mac OS 10.13 or later. If you try to run `./manage.py migrate` on an 
 earlier version, you may see an error. In this case, you can still use the TOM Toolkit, 
-but not Antares. Get running by removing Antares from the following list in `settings.py`:
+but not Antares. Get your TOM running by removing Antares from the following list in
+`settings.py`:
 
 ```
 TOM_ALERT_CLASSES = [
