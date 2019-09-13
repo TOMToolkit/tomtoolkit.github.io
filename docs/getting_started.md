@@ -6,7 +6,7 @@ So you've decided to run a Target Observation Manager. This article will help yo
 
 The TOM Toolkit is a [Django](https://www.djangoproject.com/) project. This means you'll be running
 an application based on the Django framework when you run a TOM. If you decide to customize
-your TOM, you'll be working in Django. You'll likely need some basic understanding of python
+your TOM, you'll be working in Django. You'll likely need some basic understanding of Python
 and we recommend all users work their way through the
 [Django tutorial](https://docs.djangoproject.com/en/2.1/contents/) first before starting with
 the TOM Toolkit. It doesn't take long, and you most likely won't need to utilize any advanced
@@ -38,7 +38,7 @@ If you need to install Homebrew, there is a single-line installation command tha
 First, we recommend using a
 [virtual environment](https://docs.python.org/3/tutorial/venv.html) for your
 project.
-This will keep your TOM python packages seperate from your system python packages.
+This will keep your TOM Python packages seperate from your system Python packages.
 
     python3 -m venv tom_env/
 
