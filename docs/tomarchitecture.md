@@ -102,7 +102,7 @@ Thanks Bryan!
 ### Template Engine
 The toolkit is able to take advantage of Django's excellent [template
 engine](https://docs.djangoproject.com/en/2.2/topics/templates/). Part of the
-engine's power comes form the ability of templates to extend and override
+engine's power comes from the ability of templates to extend and override
 each other. This means a TOM developer can easily change the layout and style of
 any page without modifying the underlying framework's code directly. Entire pages
 may be replaced, or only "blocks" within a template.
