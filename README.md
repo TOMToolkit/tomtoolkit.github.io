@@ -1,3 +1,5 @@
+## NOTE: This project has been supplanted by the TOM Toolkit readthedocs and serves only to redirect requests to tom-toolkit.readthedocs.io.
+
 ## TOM Toolkit Community Page
 This is the source code for the TOM Toolkit page located at https://tomtoolkit.github.io using the Jekyll static site generator.
 
